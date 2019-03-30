@@ -21,7 +21,19 @@
         <a class="nav-link" href="#">Matches</a>
       </li>
     </ul>
-    <form #loginForm="ngForm" class="form-inline my-2 my-lg-0"(ngSubmit)="login()" enctype="application/x-www-form-urlencoded">
+    <div *ngIf="loggedIn()" class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Welcome User
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+      </div>
+    </div>
+
+    <form *ngIf="loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0"(ngSubmit)="login()" enctype="application/x-www-form-urlencoded">
       <input class="form-control mr-sm-2" type="text" name="username"
       placeholder="UserName" [(ngModel)]="model.UserName" required aria-label="Search">
       <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password"

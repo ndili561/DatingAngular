@@ -11,9 +11,7 @@ export class NavComponent implements OnInit {
   model: any = {};
    constructor(private authService: AuthService) {}
 
-   ngOnInit() {
-
-   }
+   ngOnInit() {}
 
    login() {
      this.authService.login(this.model).subscribe(x => {
@@ -21,6 +19,13 @@ export class NavComponent implements OnInit {
      }, error => {
        console.log('Error');
      });
+    }
+    loggedIn() {
+      const token = localStorage.getItem('token');
+      return !!token;
+    }
 
-   }
+    loggedOut(){
+      localStorage.removeItem('token');
+    }
 }
