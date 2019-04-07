@@ -7,6 +7,13 @@
   </div>
 
   <div class="form-group">
+    <label for="lookFor">What do you look for?</label>
+    <select class="form-control" id="lookfor">
+      <option *ngFor="let item of lookfor" [value]="value">{{item.Key}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
     <input type="password" class="form-control" required name="Password" [(ngModel)]="model.Password" placeholder="Password">
   </div>
 

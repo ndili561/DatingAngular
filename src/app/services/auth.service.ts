@@ -20,7 +20,7 @@ constructor(private http: HttpClient) {
     })
   };
   return this.http.post(this.baseUrl + 'login',
-  new HttpParams({fromObject: {UserName:model.UserName, Password: model.Password}}), httpOptions)
+  new HttpParams({fromObject: {UserName: model.UserName, Password: model.Password}}), httpOptions)
   .pipe(
     map((response: any) => {
       const user = response;
@@ -32,7 +32,13 @@ constructor(private http: HttpClient) {
  }
 
  register(model:any){
-   return this.http.post(this.baseUrl + "register", model);
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+  };
+  return this.http.post(this.baseUrl + 'register', new HttpParams({fromObject: {UserName: model.UserName, Password: model.Password}}),
+    httpOptions);
  }
 
 }

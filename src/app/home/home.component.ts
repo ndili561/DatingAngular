@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
+  values: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.getLookFor();
+  }
+  getLookFor(): any {
+    return this.values = [{Key:'Man'} , {Key:'Woman'}];
   }
 
   registerToggle() {
