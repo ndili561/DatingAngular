@@ -9,7 +9,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class AuthService {
   baseUrl = 'http://localhost:60511/api/auth/';
   jwthelper = new JwtHelperService();
-  decodeToken: any;
+
 
 constructor(private http: HttpClient) {
 
@@ -27,9 +27,9 @@ constructor(private http: HttpClient) {
     map((response: any) => {
       const user = response;
       if (user) {
-        localStorage.setItem('token', user.token);
-        this.decodeToken = this.jwthelper.decodeToken(user.token);
-        console.log(this.decodeToken);
+        localStorage.setItem('token', user.value.token);
+        this.decodedToken = this.jwthelper.decodeToken(user.value.token);
+        console.log(this.decodedToken);
       }
     })
   );
@@ -50,9 +50,10 @@ constructor(private http: HttpClient) {
    return !this.jwthelper.isTokenExpired(token);
  }
 
- decodeTok() {
-   return this.decodeToken;
+ decodedToken(){
+  this.jwthelper.decodeToken(localStorage.getItem('token'));
  }
+
 
 
 

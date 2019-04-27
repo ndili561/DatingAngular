@@ -10,7 +10,7 @@ import { AlertifyService } from '../services/AlertifyService.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-   constructor(private authService: AuthService, private alertyfy: AlertifyService) {}
+   constructor(public authService: AuthService, private alertyfy: AlertifyService) {}
 
    ngOnInit() {}
 
@@ -22,13 +22,18 @@ export class NavComponent implements OnInit {
      });
     }
     loggedIn() {
-      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('token');
       // return !!token;
       return this.authService.loggedIn();
     }
 
     loggedOut() {
       localStorage.removeItem('token');
-      this.alertyfy.success("Logged out");
+      this.alertyfy.success('Logged out');
+    }
+
+    decodedToken(){
+      return this.authService.decodedToken();
+
     }
 }
