@@ -3,12 +3,22 @@ import { HomeComponent } from './home/home.component';
 import { MemberlistComponent } from './memberlist/memberlist.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ListComponent } from './list/list.component';
+import { AuthGuard } from './_guards/Authguard';
 
 
 export const AppRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
+  {
+    path:'',
+    runGuardsAndResolvers:'always',
+    canActivate:[AuthGuard],
+    children:[
   {path: 'members', component: MemberlistComponent},
   {path: 'messages', component: MessagesComponent},
   {path: 'lists', component: ListComponent},
-  {path: '**',  redirectTo: 'home', pathMatch: 'full'}
+
+    ]
+  },
+
+  {path: '**',  redirectTo: '', pathMatch: 'full'}
 ];

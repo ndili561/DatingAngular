@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
     this.getLookFor();
   }
   getLookFor(): any {
-    return this.values = [{Key:'Man'} , {Key:'Woman'}];
+    return this.values = [{Key: 'Man'} , {Key: 'Woman'}];
   }
 
   registerToggle() {
